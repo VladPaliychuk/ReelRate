@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Movie.DAL.Configuration;
 using Movie.DAL.Entities;
 using Movie.DAL.Entities.RelationsEntity;
 
@@ -24,5 +25,13 @@ public class MovieContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.ApplyConfiguration(new FilmActorConfiguration());
+        modelBuilder.ApplyConfiguration(new FilmDirectorConfiguration());
+        modelBuilder.ApplyConfiguration(new FilmGenreConfiguration());
+        
+        modelBuilder.ApplyConfiguration(new FilmConfiguration());
+        modelBuilder.ApplyConfiguration(new DirectorConfiguration());
+        modelBuilder.ApplyConfiguration(new ActorConfiguration());
+        modelBuilder.ApplyConfiguration(new GenreConfiguration());
     }
 }

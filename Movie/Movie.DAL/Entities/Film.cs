@@ -9,8 +9,7 @@ public class Film
 {
     [Key]
     public Guid Id { get; set; }
-        
-    [Required(ErrorMessage = "Це поле обов'язкове")]
+    
     public string Name { get; set; } = null!;
     public string Description { get; set; } = null!;
     public string ReleaseDate { get; set; } = null!;
