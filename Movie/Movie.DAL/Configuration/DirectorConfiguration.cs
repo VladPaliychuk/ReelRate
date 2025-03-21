@@ -23,7 +23,7 @@ public class DirectorConfiguration : IEntityTypeConfiguration<Director>
             .HasMaxLength(100);
         
         builder.Property(d => d.Info)
-            .IsRequired()
+            .IsRequired(false)
             .HasMaxLength(1000);
 
         builder.Property(d => d.Image)

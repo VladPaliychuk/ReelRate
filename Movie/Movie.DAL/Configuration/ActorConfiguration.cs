@@ -23,7 +23,7 @@ public class ActorConfiguration : IEntityTypeConfiguration<Actor>
             .HasMaxLength(100);
         
         builder.Property(d => d.Info)
-            .IsRequired()
+            .IsRequired(false)
             .HasMaxLength(1000);
 
         builder.Property(d => d.Image)
