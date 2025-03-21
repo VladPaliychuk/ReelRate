@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Movie.DAL.Data;
+using Movie.DAL.Exceptions;
+using Movie.DAL.Infrastructure.Interfaces;
 
 namespace Movie.DAL.Infrastructure;
 
-public class GenericRepository<TEntity> : IGenreicRepository<TEntity> where TEntity : class
+public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {
     protected readonly MovieContext _context;
     private readonly DbSet<TEntity> _table;
@@ -14,25 +16,18 @@ public class GenericRepository<TEntity> : IGenreicRepository<TEntity> where TEnt
         _context = context;
         _table = context.Set<TEntity>();
     }
+    
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+    {
+        return await _table.ToListAsync();
+    }
 
-    /// <summary>
-    /// GetByIdAsync
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns>TEntity</returns>
-    /// <exception cref="EntityNotFoundException"></exception>
     public virtual async Task<TEntity> GetByIdAsync(Guid id)
     {
         return await _table.FindAsync(id)
                ?? throw new EntityNotFoundException($"{typeof(TEntity).Name} with id {id} not found.");
     }
 
-    /// <summary>
-    /// AddAsync
-    /// </summary>
-    /// <param name="entity"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentNullException"></exception>
     public virtual async Task AddAsync(TEntity entity)
     {
         if (entity == null)
@@ -41,12 +36,20 @@ public class GenericRepository<TEntity> : IGenreicRepository<TEntity> where TEnt
         }
         await _table.AddAsync(entity);
     }
-
-    /// <summary>
-    /// UpdateAsync
-    /// </summary>
-    /// <param name="entity"></param>
-    /// <returns></returns>
+    
+    public virtual async Task AddRangeAsync(IEnumerable<TEntity> entities)
+    {
+        if (entities == null || !entities.Any())
+            throw new ArgumentNullException(nameof(entities));
+        
+        await _table.AddRangeAsync(entities);
+    }
+    
+    public virtual async Task<IEnumerable<TEntity>> FindAsync(Func<TEntity, bool> predicate)
+    {
+        return await Task.Run(() => _table.Where(predicate).ToList());
+    }
+    
     public virtual async Task UpdateAsync(TEntity entity)
     {
         if (entity == null)
@@ -56,11 +59,15 @@ public class GenericRepository<TEntity> : IGenreicRepository<TEntity> where TEnt
         await Task.Run(() => _table.Update(entity));
     }
 
-    /// <summary>
-    /// DeleteByIdAsync
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    public virtual async Task UpdateRangeAsync(IEnumerable<TEntity> entities)
+    {
+        if (entities == null || !entities.Any())
+            throw new ArgumentNullException(nameof(entities));
+        
+        _table.UpdateRange(entities);
+        await Task.CompletedTask;
+    }
+    
     public virtual async Task DeleteByIdAsync(Guid id)
     {
         var entity = await GetByIdAsync(id) 
@@ -69,11 +76,6 @@ public class GenericRepository<TEntity> : IGenreicRepository<TEntity> where TEnt
         await Task.Run(() => _table.Remove(entity));
     }
 
-    /// <summary>
-    /// DeleteAsync
-    /// </summary>
-    /// <param name="entity"></param>
-    /// <returns></returns>
     public virtual async Task DeleteAsync(TEntity entity)
     {
         if (entity == null)
@@ -81,5 +83,15 @@ public class GenericRepository<TEntity> : IGenreicRepository<TEntity> where TEnt
             throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
         }
         await Task.Run(() => _table.Remove(entity));
+    }
+    
+    public virtual async Task DeleteRangeAsync(IEnumerable<TEntity> entities)
+    {
+        if (entities == null || !entities.Any())
+            throw new ArgumentNullException(nameof(entities));
+        
+        _table.RemoveRange(entities);
+        /// <exception cref="ArgumentNullException"></exception>
+        await Task.CompletedTask;
     }
 }
