@@ -1,0 +1,29 @@
+﻿version: '3.4'
+
+services:
+  movie.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    container_name: movie.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - moviedb
+    ports:
+      - "5000:80"
+    build:
+      context: .
+      dockerfile: Movie/Movie.API/Dockerfile
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      
+  moviedb:
+    image: postgres:latest
+    container_name: moviedb
+    environment:
+      POSTGRES_DB: "MovieDatabase"
+      POSTGRES_USER: "VladPostgres"
+      POSTGRES_PASSWORD: "VladPostgres"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"

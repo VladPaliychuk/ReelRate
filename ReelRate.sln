@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Movie", "Movie", "{43AFF091-99A6-4DE9-AE78-9C9B318D9EE1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie.DAL", "Movie\Movie.DAL\Movie.DAL.csproj", "{26EA346B-38D2-4F2E-BBBC-086E649587F7}"
@@ -8,6 +8,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie.BLL", "Movie\Movie.BLL\Movie.BLL.csproj", "{7D0BD342-452E-4576-9135-C440251F78D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie.API", "Movie\Movie.API\Movie.API.csproj", "{A9DBE4E8-9664-4493-9C58-08B8E694F52B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{769EE88A-46AB-4372-AEF1-292ED38769FC}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
