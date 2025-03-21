@@ -6,8 +6,9 @@ namespace Movie.DAL.Entities;
 public class Actor
 {
     public Guid Id { get; set; }
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
+    public string FullName { get; set; } = null!;
+    public string? BirthDate { get; set; }
+    public string? BirthPlace { get; set; }
     public string Info { get; set; } = null!;
     public string? Image { get; set; }
 

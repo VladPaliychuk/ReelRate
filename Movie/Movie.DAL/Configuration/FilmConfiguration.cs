@@ -30,7 +30,8 @@ public class FilmConfiguration : IEntityTypeConfiguration<Film>
             .IsRequired();
         
         builder.Property(f => f.Image)
-            .IsRequired(false);
+            .IsRequired(false)
+            .HasMaxLength(1000);
         
         builder.HasMany(f => f.FilmActors)
             .WithOne(fa => fa.Film)
