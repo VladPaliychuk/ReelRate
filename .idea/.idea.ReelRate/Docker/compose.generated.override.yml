@@ -3,19 +3,19 @@ version: "3.4"
 services:
   movie.api:
     build:
-      context: "/home/slim/RiderProjects/ReelRate"
+      context: "C:\\Users\\Vladyslav\\RiderProjects\\ReelRate"
       dockerfile: "Movie/Movie.API/Dockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
-    - "/app/bin/Debug/net8.0/Movie.API.dll"
+    - "/app/bin/Debug/net9.0/Movie.API.dll"
     environment:
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "catalogapi:dev"
     ports: []
     volumes:
-    - "/home/slim/RiderProjects/ReelRate/Movie/Movie.API:/app:rw"
-    - "/home/slim/RiderProjects/ReelRate:/src:rw"
-    - "/home/slim/.nuget/packages:/home/app/.nuget/packages"
+    - "C:\\Users\\Vladyslav\\RiderProjects\\ReelRate\\Movie\\Movie.API:/app:rw"
+    - "C:\\Users\\Vladyslav\\RiderProjects\\ReelRate:/src:rw"
+    - "C:\\Users\\Vladyslav\\.nuget\\packages:/home/app/.nuget/packages"
     working_dir: "/app"

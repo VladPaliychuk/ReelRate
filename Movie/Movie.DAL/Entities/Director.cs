@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using Movie.DAL.Entities.RelationsEntity;
+using Movie.DAL.Entities.RelationsEntities;
 
 namespace Movie.DAL.Entities;
 

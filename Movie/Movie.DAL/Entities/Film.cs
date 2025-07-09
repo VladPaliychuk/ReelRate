@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using Movie.DAL.Entities.RelationsEntity;
+using Movie.DAL.Entities.RelationsEntities;
 
 namespace Movie.DAL.Entities;
 
@@ -17,6 +17,7 @@ public class Film
     public string Country { get; set; } = null!;
     public string AgeRestriction { get; set; } = null!;
     public string? Image { get; set; }
+    public string? Rating { get; set; }
     
     [JsonIgnore] public ICollection<FilmActor>? FilmActors { get; set; }
     [JsonIgnore] public ICollection<FilmGenre>? FilmGenres { get; set; }

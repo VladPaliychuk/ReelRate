@@ -16,10 +16,11 @@ namespace Movie.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    FirstName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    LastName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    Info = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: false)
+                    FullName = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
+                    BirthDate = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
+                    BirthPlace = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Info = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
+                    Image = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,10 +32,11 @@ namespace Movie.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    FirstName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    LastName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    Info = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: false)
+                    FullName = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
+                    BirthDate = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
+                    BirthPlace = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Info = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
+                    Image = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,7 +54,8 @@ namespace Movie.DAL.Migrations
                     Duration = table.Column<string>(type: "text", nullable: false),
                     Country = table.Column<string>(type: "text", nullable: false),
                     AgeRestriction = table.Column<string>(type: "text", nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: true)
+                    Image = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
+                    Rating = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

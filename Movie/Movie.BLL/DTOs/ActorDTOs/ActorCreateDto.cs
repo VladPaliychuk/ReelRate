@@ -4,16 +4,15 @@ namespace Movie.BLL.DTOs.ActorDTOs;
 
 public class ActorCreateDto
 {
-    [Required]
-    [MaxLength(40)]
+    [Required(ErrorMessage = "Fullname is required.")]
+    [StringLength(40, ErrorMessage = "Fullname cannot exceed 40 characters.")]
     public string FullName { get; set; } = null!;
-    [MaxLength(10)]
+    [StringLength(10, ErrorMessage = "Birthdate cannot exceed 10 characters.")]
     public string? BirthDate { get; set; }
-    [MaxLength(100)]
+    [StringLength(100, ErrorMessage = "Birthplace cannot exceed 100 characters.")]
     public string? BirthPlace { get; set; }
-    [Required]
-    [MaxLength(1000)]
+    [StringLength(1000, ErrorMessage = "Info cannot exceed 1000 characters.")]
     public string? Info { get; set; }
-    [MaxLength(1000)]
+    [StringLength(1000, ErrorMessage = "Image file path cannot exceed 1000 characters.")]
     public string? ImageFile { get; set; }
 }

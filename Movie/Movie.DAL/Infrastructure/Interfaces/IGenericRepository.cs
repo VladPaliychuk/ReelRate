@@ -4,7 +4,7 @@ public interface IGenericRepository<TEntity> where TEntity : class
 {
     Task<IEnumerable<TEntity>> GetAllAsync();
     Task<TEntity> GetByIdAsync(Guid id);
-    Task AddAsync(TEntity entity);
+    Task<TEntity> AddAsync(TEntity entity);
     Task AddRangeAsync(IEnumerable<TEntity> entities);
     Task<IEnumerable<TEntity>> FindAsync(Func<TEntity, bool> predicate);
     Task UpdateAsync(TEntity entity);

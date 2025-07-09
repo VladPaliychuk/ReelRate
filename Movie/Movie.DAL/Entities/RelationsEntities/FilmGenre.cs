@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Movie.DAL.Entities.RelationsEntity;
+namespace Movie.DAL.Entities.RelationsEntities;
 
 public class FilmGenre
 {

@@ -28,13 +28,14 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
                ?? throw new EntityNotFoundException($"{typeof(TEntity).Name} with id {id} not found.");
     }
 
-    public virtual async Task AddAsync(TEntity entity)
+    public virtual async Task<TEntity>? AddAsync(TEntity entity)
     {
         if (entity == null)
         {
             throw new ArgumentNullException($"{nameof(TEntity)} entity must not be null");
         }
-        await _table.AddAsync(entity);
+        var entry = await _table.AddAsync(entity);
+        return entry.Entity;
     }
     
     public virtual async Task AddRangeAsync(IEnumerable<TEntity> entities)

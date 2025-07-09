@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Movie.DAL.Entities.RelationsEntity;
+using Movie.DAL.Entities.RelationsEntities;
 
 namespace Movie.DAL.Configuration;
 

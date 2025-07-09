@@ -5,11 +5,11 @@ using Movie.DAL.Repository.Interfaces;
 
 namespace Movie.DAL.Infrastructure;
 
-public class UnitOFWork : IUnitOfWork
+public class UnitOfWork : IUnitOfWork
 {
     protected readonly MovieContext context;
     
-    public UnitOFWork(MovieContext context,
+    public UnitOfWork(MovieContext context,
         IActorRepository actorRepository,
         IFilmRepository filmRepository,
         IDirectorRepository directorRepository,

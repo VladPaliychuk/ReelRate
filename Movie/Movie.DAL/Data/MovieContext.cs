@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movie.DAL.Configuration;
 using Movie.DAL.Entities;
-using Movie.DAL.Entities.RelationsEntity;
+using Movie.DAL.Entities.RelationsEntities;
 
 namespace Movie.DAL.Data;
 
