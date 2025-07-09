@@ -5,7 +5,6 @@ namespace Movie.BLL.DTOs.DirectorDTOs;
 public class DirectorUpdateDto
 {
     [Required(ErrorMessage = "Id is required.")]
-    [StringLength(maximumLength: 15, MinimumLength = 15, ErrorMessage = "Id must be exactly 15 characters long.")]
     public Guid Id { get; set; }
     
     [Required(ErrorMessage = "Fullname is required.")]

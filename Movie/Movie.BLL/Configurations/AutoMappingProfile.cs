@@ -51,7 +51,6 @@ public class AutoMappingProfile : Profile
     
     private void CreateRatingMaps()
     {
-        CreateMap<RatingCreateDto, Rating>();
-        CreateMap<Rating, RatingGetDto>();
+        CreateMap<RatingGetDto, Rating>().ReverseMap();
     }
 }

@@ -30,6 +30,11 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //services
 builder.Services.AddScoped<IActorService, ActorService>();
+builder.Services.AddScoped<IFilmService, FilmService>();
+builder.Services.AddScoped<IDirectorService, DirectorService>();
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
+
 
 //repositories
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

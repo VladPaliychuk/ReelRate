@@ -83,6 +83,7 @@ public class ActorController : ControllerBase
     }
 
     [HttpPut]
+    [ProducesResponseType(typeof(ActorGetDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateActor([FromBody] ActorUpdateDto updateDto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -120,7 +121,7 @@ public class ActorController : ControllerBase
                 return NotFound();
             }
             _logger.LogInformation($"Successfully deleted actor with ID: {id}");
-            return NoContent();
+            return Ok();
         }
         catch (Exception ex)
         {

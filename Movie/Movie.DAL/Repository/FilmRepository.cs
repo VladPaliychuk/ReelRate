@@ -16,7 +16,7 @@ public class FilmRepository : GenericRepository<Film>, IFilmRepository
     public async Task<IEnumerable<Film>> GetAllWithRatingAsync()
     {
         IQueryable<Film> query = _context.Films;
-        query = query.Include(f => f.Rating!.Score);
+        query = query.Include(f => f.Rating);
         
         return await query.ToListAsync();
     }
@@ -24,7 +24,7 @@ public class FilmRepository : GenericRepository<Film>, IFilmRepository
     public Task<Film?> GetByIdWithRatingAsync(Guid id)
     {
         IQueryable<Film> query = _context.Films;
-        query = query.Include(f => f.Rating!.Score);
+        query = query.Include(f => f.Rating);
         
         return query.FirstOrDefaultAsync(f => f.Id == id);
     }

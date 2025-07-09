@@ -5,5 +5,5 @@ namespace Movie.DAL.Repository.Interfaces;
 
 public interface IRatingRepository : IGenericRepository<Rating>
 {
-    
+    Task<Rating> GetByFilmIdAsync(Guid filmId);
 }
