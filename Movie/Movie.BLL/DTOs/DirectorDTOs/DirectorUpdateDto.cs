@@ -1,8 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Movie.BLL.DTOs.ActorDTOs;
+namespace Movie.BLL.DTOs.DirectorDTOs;
 
-public class ActorUpdateDto
+public class DirectorUpdateDto
 {
     [Required(ErrorMessage = "Id is required.")]
     public Guid Id { get; set; }

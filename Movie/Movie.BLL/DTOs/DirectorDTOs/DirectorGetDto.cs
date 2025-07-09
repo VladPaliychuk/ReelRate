@@ -1,6 +1,6 @@
-namespace Movie.BLL.DTOs.ActorDTOs;
+﻿namespace Movie.BLL.DTOs.DirectorDTOs;
 
-public class ActorGetDto
+public class DirectorGetDto
 {
     public Guid Id { get; set; }
     public string FullName { get; set; } = null!;

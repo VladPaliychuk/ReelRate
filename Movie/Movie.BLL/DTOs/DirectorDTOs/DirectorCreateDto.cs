@@ -1,12 +1,9 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Movie.BLL.DTOs.ActorDTOs;
+namespace Movie.BLL.DTOs.DirectorDTOs;
 
-public class ActorUpdateDto
+public class DirectorCreateDto
 {
-    [Required(ErrorMessage = "Id is required.")]
-    public Guid Id { get; set; }
-    
     [Required(ErrorMessage = "Fullname is required.")]
     [StringLength(40, ErrorMessage = "Fullname cannot exceed 40 characters.")]
     public string FullName { get; set; } = null!;
