@@ -15,23 +15,32 @@ public class FilmConfiguration : IEntityTypeConfiguration<Film>
             .HasMaxLength(1000);
 
         builder.Property(f => f.ReleaseDate)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(10);
 
         builder.Property(f => f.Description)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(2000);
         
         builder.Property(f => f.Duration)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(15);
         
         builder.Property(f => f.Country)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(20);
         
         builder.Property(f => f.AgeRestriction)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(3);
         
         builder.Property(f => f.Image)
             .IsRequired(false)
             .HasMaxLength(1000);
+        
+        builder.HasOne(f => f.Rating)
+            .WithOne(r => r.Film)
+            .HasForeignKey<Rating>(r => r.FilmId);
         
         builder.HasMany(f => f.FilmActors)
             .WithOne(fa => fa.Film)

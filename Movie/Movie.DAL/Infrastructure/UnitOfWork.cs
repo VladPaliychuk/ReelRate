@@ -14,6 +14,7 @@ public class UnitOfWork : IUnitOfWork
         IFilmRepository filmRepository,
         IDirectorRepository directorRepository,
         IGenreRepository genreRepository,
+        IRatingRepository ratingRepository,
         
         IFilmActorRepository filmActorRepository,
         IFilmDirectorRepository filmDirectorRepository,
@@ -25,6 +26,7 @@ public class UnitOfWork : IUnitOfWork
         FilmRepository = filmRepository;
         DirectorRepository = directorRepository;
         GenreRepository = genreRepository;
+        RatingRepository = ratingRepository;
         
         FilmActorRepository = filmActorRepository;
         FilmDirectorRepository = filmDirectorRepository;
@@ -35,6 +37,7 @@ public class UnitOfWork : IUnitOfWork
     public IDirectorRepository DirectorRepository { get; }
     public IFilmRepository FilmRepository { get; }
     public IGenreRepository GenreRepository { get; }
+    public IRatingRepository RatingRepository { get; }
     
     public IFilmActorRepository FilmActorRepository { get; }
     public IFilmDirectorRepository FilmDirectorRepository { get; }
