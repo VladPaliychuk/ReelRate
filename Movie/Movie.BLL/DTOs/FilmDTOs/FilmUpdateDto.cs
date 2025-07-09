@@ -29,5 +29,4 @@ public class FilmUpdateDto
     
     [StringLength(1000, ErrorMessage = "Image file path cannot exceed 1000 characters.")]
     public string? Image { get; set; }
-    public string? Rating { get; set; }
 }

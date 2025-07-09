@@ -30,7 +30,4 @@ public class FilmCreateDto
     
     [StringLength(1000, ErrorMessage = "Image file path cannot exceed 1000 characters.")]
     public string? Image { get; set; }
-    
-    [StringLength(3, ErrorMessage = "Rating cannot exceed 3 characters.")]
-    public string? Rating { get; set; }
 }

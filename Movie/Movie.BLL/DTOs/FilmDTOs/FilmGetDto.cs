@@ -11,5 +11,5 @@ public class FilmGetDto
     public string Country { get; set; } = null!;
     public string AgeRestriction { get; set; } = null!;
     public string? Image { get; set; }
-    public string? Rating { get; set; }
+    public decimal? Rating { get; set; }
 }

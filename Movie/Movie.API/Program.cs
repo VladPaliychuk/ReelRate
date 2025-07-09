@@ -40,6 +40,7 @@ builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IFilmActorRepository, FilmActorRepository>();
 builder.Services.AddScoped<IFilmDirectorRepository, FilmDirectorRepository>();
 builder.Services.AddScoped<IFilmGenreRepository, FilmGenreRepository>();
+builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 
 //context
 builder.Services.AddScoped<MovieContext>();
