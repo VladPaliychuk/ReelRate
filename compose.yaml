@@ -2,7 +2,7 @@
 
 services:
   movie.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
+    image: ${DOCKER_REGISTRY-}movie.api
     container_name: movie.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

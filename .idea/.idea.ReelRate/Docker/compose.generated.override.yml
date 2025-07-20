@@ -12,7 +12,7 @@ services:
     - "/app/bin/Debug/net9.0/Movie.API.dll"
     environment:
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
-    image: "catalogapi:dev"
+    image: "movie.api:dev"
     ports: []
     volumes:
     - "C:\\Users\\Vladyslav\\RiderProjects\\ReelRate\\Movie\\Movie.API:/app:rw"

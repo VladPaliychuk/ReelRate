@@ -1,0 +1,39 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-api
+  labels:
+    app: movie-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-api
+  template:
+    metadata:
+      labels:
+        app: movie-api
+    spec:
+      containers:
+        - name: movie-api
+          image: vladpaliychuk/movie-api:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: "moviedb"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: movie-db-secret
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: movie-db-secret
+                  key: db_password
+            - name: DB_NAME
+              value: "MovieDatabase"
