@@ -28,4 +28,14 @@ public class FilmRepository : GenericRepository<Film>, IFilmRepository
         
         return query.FirstOrDefaultAsync(f => f.Id == id);
     }
+
+    public async Task<Film?> GetByIdWithRelationsAsync(Guid id)
+    {
+        return await _context.Films
+            .Include(f => f.Rating)
+            .Include(f => f.FilmActors).ThenInclude(fa => fa.Actor)
+            .Include(f => f.FilmGenres).ThenInclude(fg => fg.Genre)
+            .Include(f => f.FilmDirectors).ThenInclude(fd => fd.Director)
+            .FirstOrDefaultAsync(f => f.Id == id);
+    }
 }

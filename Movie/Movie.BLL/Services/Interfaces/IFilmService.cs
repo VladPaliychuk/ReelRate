@@ -8,6 +8,8 @@ public interface IFilmService
     Task<FilmGetDto> GetFilmByIdAsync(Guid id);
     Task<FilmGetDto> CreateFilmAsync(FilmCreateDto createDto);
     Task<FilmWithRelationsCreateDto> CreateFilmWithRelations (FilmWithRelationsCreateDto dto);
+    Task<FilmWithRelationsGetDto> GetFilmWithRelationsAsync(Guid id);
+    Task<FilmWithRelationsCreateDto> UpdateFilmWithRelationsAsync(Guid filmId, FilmWithRelationsCreateDto dto);
     Task<FilmGetDto> UpdateFilmAsync(FilmUpdateDto updateDto);
     Task<bool> DeleteFilmAsync(Guid id);
 }

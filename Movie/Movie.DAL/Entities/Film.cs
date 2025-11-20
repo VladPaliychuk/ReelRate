@@ -17,9 +17,10 @@ public class Film
     public string Country { get; set; } = null!;
     public string AgeRestriction { get; set; } = null!;
     public string? Image { get; set; }
-    
-    [JsonIgnore] public Rating? Rating { get; set; }
-    [JsonIgnore] public ICollection<FilmActor>? FilmActors { get; set; }
-    [JsonIgnore] public ICollection<FilmGenre>? FilmGenres { get; set; }
-    [JsonIgnore] public ICollection<FilmDirector>? FilmDirectors { get; set; }
+
+    [JsonIgnore] public Rating Rating { get; set; }
+    [JsonIgnore] public ICollection<FilmActor> FilmActors { get; set; } = new List<FilmActor>();
+    [JsonIgnore] public ICollection<FilmGenre> FilmGenres { get; set; } = new List<FilmGenre>();
+    [JsonIgnore] public ICollection<FilmDirector> FilmDirectors { get; set; } = new List<FilmDirector>();
+
 }
